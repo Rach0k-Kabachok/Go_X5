@@ -20,7 +20,6 @@ func (err *SendError) Unwrap() error {
 	return err.err
 }
 
-// Is сравнивает канал, а исходную причину errors.Is проверяет через Unwrap.
 func (err *SendError) Is(target error) bool {
 	other, ok := target.(*SendError)
 	return ok && err != nil && other != nil && err.channel == other.channel
